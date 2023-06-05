@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               const Text(
                 'Hvad vil du øve?',
                 style: TextStyle(
