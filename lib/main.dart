@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mat_trainer/practise.dart';
 import 'package:mat_trainer/subject_button.dart';
 
 void main() {
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
-                  color: Colors.red,
+                  color: Colors.purple,
                 ),
               ),
               Column(

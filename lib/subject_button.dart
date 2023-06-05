@@ -16,7 +16,12 @@ class SubjectButton extends StatelessWidget {
         minimumSize: const Size(300, 32),
       ),
         onPressed: () {
-          PractiseScreen(subject: subject);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PractiseScreen(subject: subject),
+            ),
+          );
         },
         child: Text(subject),
     );
