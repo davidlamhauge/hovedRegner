@@ -9,13 +9,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Forside',
+            'Hovedregning',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -25,8 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              const SizedBox(height: 40),
               const Text(
                 'Hvad vil du øve?',
                 style: TextStyle(
@@ -39,14 +41,12 @@ class MyApp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   SubjectButton(subject: 'Plus'),
-                  SizedBox(height: 5),
                   SubjectButton(subject: 'Minus'),
-                  SizedBox(height: 5),
                   SubjectButton(subject: 'Gange'),
-                  SizedBox(height: 5),
                   SubjectButton(subject: 'Division'),
                 ],
               ),
+              const Image(image: AssetImage('assets/hovedregning.png'))
             ],
           ),
         ),
