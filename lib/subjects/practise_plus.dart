@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'wrong_answers.dart';
 
 class PractisePlus extends StatefulWidget {
   const PractisePlus({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class PractisePlus extends StatefulWidget {
 
 // variables
 bool _continue = true;
+bool _finished = false;
 String quiz = '';
 int tal1 = 0;
 int tal2 = 0;
@@ -43,11 +45,13 @@ class _PractisePlusState extends State<PractisePlus> {
           yes++;
         } else {
           no++;
-          wrongAnswers.add(quiz);
+          wrongAnswers.add('$quiz = $answer');
+          wrongAnswers.add('[Korrekt: $quiz = $correctAnswer]\n');
         }
         questNum++;
         if (questNum > 9) {
           _continue = false;
+          _finished = true;
         }
       }
     });
@@ -59,6 +63,7 @@ class _PractisePlusState extends State<PractisePlus> {
     no = 0;
     questNum = 0;
     _continue = true;
+    _finished = false;
     wrongAnswers.clear();
     super.initState();
   }
@@ -73,6 +78,7 @@ class _PractisePlusState extends State<PractisePlus> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(height: 20),
             Column(
               children: [
                 Row(
@@ -178,32 +184,23 @@ class _PractisePlusState extends State<PractisePlus> {
                       ),
                     ],
                   )
-                : wrongAnswers.isNotEmpty
-                    ? Column(
-                        children: [
-                          Text(
-                            'Resultat: $yes ud af $questNum',
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.purple,
-                            ),
-                          ),
-                          Container(
-                            color: Colors.green[100],
-                            height: 80,
-                            alignment: Alignment.center,
-                            child: Column(
-                              children: [
-                                SingleChildScrollView(
-                                  child: Text(wrongAnswers[0]),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    : const Spacer(),
+                : Text(
+                    'Resultat: $yes ud af $questNum',
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.purple,
+                    ),
+                  ),
+            _finished && wrongAnswers.isNotEmpty
+                ? Container(
+                    color: Colors.green[100],
+                    height: 80,
+                    alignment: Alignment.center,
+                    child: SingleChildScrollView(
+                        child: WrongAnswers(strings: wrongAnswers)),
+                  )
+                : const Spacer(),
             const Image(
               image: AssetImage('assets/hovedregning.png'),
             ),
