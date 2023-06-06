@@ -73,7 +73,6 @@ class _PractisePlusState extends State<PractisePlus> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(height: 20),
             Column(
               children: [
                 Row(
@@ -107,26 +106,17 @@ class _PractisePlusState extends State<PractisePlus> {
             ),
             const SizedBox(height: 20),
             _continue
-                ? Text(
-                    '${_getPlusQuiz()} ?',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
-                    ),
-                  )
-                : Text(
-                    'Resultat: $yes ud af $questNum',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
-                    ),
-                  ),
-            const SizedBox(height: 20),
-            _continue
                 ? Column(
                     children: [
+                      Text(
+                        '${_getPlusQuiz()} ?',
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -188,12 +178,32 @@ class _PractisePlusState extends State<PractisePlus> {
                       ),
                     ],
                   )
-                : Column(
-                    children: const [
-                      Text('Færdig med quizzen'),
-                      Spacer(),
-                    ],
-                  ),
+                : wrongAnswers.isNotEmpty
+                    ? Column(
+                        children: [
+                          Text(
+                            'Resultat: $yes ud af $questNum',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.purple,
+                            ),
+                          ),
+                          Container(
+                            color: Colors.green[100],
+                            height: 80,
+                            alignment: Alignment.center,
+                            child: Column(
+                              children: [
+                                SingleChildScrollView(
+                                  child: Text(wrongAnswers[0]),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    : const Spacer(),
             const Image(
               image: AssetImage('assets/hovedregning.png'),
             ),
