@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mat_trainer">
+    package="dk.lamhauge.mat_trainer">
    <application
         android:label="mat_trainer"
         android:name="${applicationName}"
