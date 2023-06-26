@@ -26,7 +26,13 @@ Random random = Random();
 // get question and initialize numbers...
 String _getPlusQuiz() {
   tal1 = random.nextInt(20) + 1;
+  if (tal1 == 1) {
+    tal1 += 1;
+  }
   tal2 = random.nextInt(20) + 1;
+  if (tal2 == 1) {
+    tal2 += 1;
+  }
   correctAnswer = tal1 + tal2;
   answers.clear();
   int x = correctAnswer - random.nextInt(4);
