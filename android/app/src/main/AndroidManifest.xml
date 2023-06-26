@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mat_trainer">
    <application
-        android:label="mat_trainer"
+        android:label="Hovedregning"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
