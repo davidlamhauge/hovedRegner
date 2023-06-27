@@ -209,6 +209,23 @@ class _PractiseGangeState extends State<PractiseGange> {
                   child: WrongAnswers(strings: wrongAnswers)),
             )
                 : const Spacer(),
+            ElevatedButton(
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'Hovedregning',
+                  applicationVersion: 'Version: 1.0.0',
+                  children: [
+                    const Text('"Tallene taler alle sprog -\nLad tallene blive dine venner..."'),
+                    const Text(
+                      '\nDavid Lamhauge',
+                      textAlign: TextAlign.right,
+                    ),
+                  ],
+                );
+              },
+              child: const Icon(Icons.info_outlined),
+            ),
             const Image(
               image: AssetImage('assets/hovedregning.png'),
             ),
